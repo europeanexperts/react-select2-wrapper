@@ -12,8 +12,7 @@
     "start": "cd examples && node server.js",
     "watch": "cd examples && webpack --watch",
     "build": "cd examples && webpack -p",
-    "compile": "babel -d lib/ src/",
-    "postinstall": "npm run compile"
+    "compile": "babel -d lib/ src/"
   },
   "repository": {
     "type": "git",
