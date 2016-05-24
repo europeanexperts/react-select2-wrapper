@@ -76,10 +76,7 @@ export default class Select2 extends Component {
   }
 
   setValue(value) {
-    const elVal = this.props.multiple ? this.el.val() || [] : this.el.val();
-    if (!shallowEqualFuzzy(elVal, value)) {
-      this.el.val(value).trigger('change');
-    }
+    this.el.val(value).trigger('change');
   }
 
   initSelect2(withCallbacks = true) {
