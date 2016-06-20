@@ -69,6 +69,10 @@ export default class Select2 extends Component {
       this.detachEventHandlers();
       this.attachEventHandlers();
     }
+    
+    if (!shallowEqualFuzzy(prevProps.value, this.props.value) || !shallowEqualFuzzy(this.el.val(), this.props.value)) {
+      this.setValue(this.props.value);
+    }
   }
 
   componentWillUnmount() {
@@ -76,7 +80,11 @@ export default class Select2 extends Component {
   }
 
   setValue(value) {
-    this.el.val(value).trigger('change');
+    const elVal = this.props.multiple ? this.el.val() || [] : this.el.val();
+    console.log(`Current: ${elVal} || New: ${value} || Is equal: ${elVal == value} || is fuzzy equal ? ${shallowEqualFuzzy(elVal, value)}`);
+    if (!shallowEqualFuzzy(elVal, value)) {
+      this.el.val(value).trigger('change');
+    }
   }
 
   initSelect2(withCallbacks = true) {
