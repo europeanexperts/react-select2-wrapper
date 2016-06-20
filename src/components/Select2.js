@@ -81,7 +81,7 @@ export default class Select2 extends Component {
 
   setValue(value) {
     const elVal = this.props.multiple ? this.el.val() || [] : this.el.val();
-    console.log(`Current: ${elVal} || New: ${value} || is fuzzy equal ? ${shallowEqualFuzzy(elVal, value)}`);
+    //console.log(`Current: ${elVal} || New: ${value} || is fuzzy equal ? ${shallowEqualFuzzy(elVal, value)}`);
     if (!shallowEqualFuzzy(elVal, value)) {
       this.el.val(value).trigger('change');
     }
