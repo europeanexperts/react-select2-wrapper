@@ -70,7 +70,8 @@ export default class Select2 extends Component {
       this.attachEventHandlers();
     }
     
-    if (typeof this.props.value !== 'undefined') {
+    const elVal = this.props.multiple ? this.el.val() || [] : this.el.val();
+    if (typeof this.props.value !== 'undefined' && this.props.value !== null && !shallowEqualFuzzy(elVal, this.props.value)) {
       this.setValue(this.props.value);
     }
   }
